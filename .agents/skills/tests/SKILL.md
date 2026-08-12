@@ -12,8 +12,8 @@ Where this sits in the workflow:
 
 Testing is optional in the Blueprint until the project declares a real test
 command in `AGENTS.md`. This skill is the explicit setup path. It adds or
-normalizes **unit testing** only; browser automation and end-to-end testing are
-separate setup work.
+normalizes **unit testing** only. Browser automation and end-to-end testing are
+separate setup work; run `/e2e` or `$e2e` for those.
 
 ## Input
 
@@ -54,6 +54,7 @@ If the stack is unclear, stop and ask what runner to use instead of guessing.
 
 Keep the setup minimal. Do not add coverage, browser testing, CI, snapshots,
 mock-service layers, or a large test architecture unless the user explicitly asks.
+Browser end-to-end testing has its own setup skill, `/e2e`.
 
 ## Step 3 - make the setup changes
 
@@ -109,7 +110,7 @@ Show the diff summary. Do not commit, merge, push, or start product feature work
 ## Rules
 
 - Unit testing only. Do not set up Playwright, Cypress, browser E2E, CI, or
-  coverage unless the user explicitly asks.
+  coverage here. Browser E2E is `/e2e`, CI is `/ci`.
 - Reuse existing project conventions before adding new tools.
 - Preserve existing CI. This skill may update an existing verification command,
   but it never creates a GitHub workflow on its own.

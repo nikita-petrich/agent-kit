@@ -46,6 +46,12 @@ Verify command from checks that already exist, and adds a matching pull request
 workflow without replacing existing CI. It does not invent tests or add git
 hooks, coverage, browser tests, security scans, or version matrices by default.
 
+Browser end-to-end testing is its own opt-in. `/e2e` or `$e2e` sets up Playwright
+and the Playwright CLI, `/e2e-spec` turns the current spec's done-whens into
+Playwright specs by driving the running app, and `/e2e-check` runs the suite and
+triages each failure. The setup skill creates no CI and leaves the Verify command
+unchanged unless you ask for it.
+
 It also includes `/rollback` or `$rollback` for planning a reviewed reversal of
 a completed feature from its archived spec and exact git commit. Rollbacks keep
 the original feature archive and use the normal implement, check, and complete

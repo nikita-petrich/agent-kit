@@ -44,9 +44,11 @@ type:
 
 - **Web app** - start (or reuse) the dev/preview server, then drive a real browser
   to the relevant routes. Prefer reusing an already-running server over starting a
-  duplicate. If Playwright is already installed or declared in `AGENTS.md`, prefer
-  it for browser driving, screenshots, console errors, and failed request checks.
-  If it is not installed, do not add it from `/check`; use another real-browser
+  duplicate. If `playwright-cli` is available, prefer it for browser driving:
+  `playwright-cli open <url>`, then `snapshot`, `click`, `fill`, `console`, and
+  `requests` give both the interaction and the evidence. If Playwright is
+  installed or declared in `AGENTS.md` without the CLI, use it directly. If
+  neither is installed, do not add them from `/check`; use another real-browser
   evidence path and report what you used.
 - **CLI** - run the actual command(s) with representative inputs.
 - **Server/API** - start it and hit the endpoints.
@@ -55,6 +57,11 @@ type:
 If a `test` command is declared in `AGENTS.md`, you may run it as *one* input, but
 `/check` is broader than unit tests: it checks real behavior, which is exactly the
 evidence UI and integration steps ride on instead of unit tests.
+
+If the project declares an E2E command, running the recorded suite is `/e2e-check`,
+not this skill. `/check` proves this feature's done-whens by hand right now;
+`/e2e-check` runs what was recorded and also catches regressions elsewhere. Use
+both when a feature is browser-heavy.
 
 ## Step 3 - exercise each claim
 

@@ -12,8 +12,8 @@
 
 <p align="center">
   <a href="https://www.npmjs.com/package/create-ai-blueprint"><img src="https://img.shields.io/npm/v/create-ai-blueprint?style=flat-square&color=155eef" alt="npm version"></a>
-  <a href="https://github.com/aiblueprinthq/ai-blueprint/actions/workflows/validate.yml"><img src="https://github.com/aiblueprinthq/ai-blueprint/actions/workflows/validate.yml/badge.svg" alt="Validate Blueprint"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/aiblueprinthq/ai-blueprint?style=flat-square&color=155eef" alt="MIT license"></a>
+  <a href="https://github.com/nikita-petrich/agent-kit/actions/workflows/validate.yml"><img src="https://github.com/nikita-petrich/agent-kit/actions/workflows/validate.yml/badge.svg" alt="Validate Blueprint"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/nikita-petrich/agent-kit?style=flat-square&color=155eef" alt="MIT license"></a>
 </p>
 
 <p align="center">
@@ -23,6 +23,14 @@
   <a href="https://github.com/aiblueprinthq/ai-blueprint/releases">Releases</a> |
   <a href="CHANGELOG.md">Changelog</a>
 </p>
+
+> [!NOTE]
+> **agent-kit** is a fork of
+> [bradtraversy/ai-blueprint](https://github.com/bradtraversy/ai-blueprint). The
+> workflow is unchanged. The fork adds three end-to-end testing skills built on
+> Playwright and the Playwright CLI - `/e2e`, `/e2e-spec`, and `/e2e-check` - and
+> wires them into the existing loop. See
+> [End-to-end testing](#end-to-end-testing).
 
 You provide two planning docs, with as much product depth as the project needs.
 The AI turns them into project context, feature specs, and build steps. You
@@ -82,6 +90,7 @@ helping you write.
 - [Command reference](#command-reference)
 - [Automatic GitHub checks](#automatic-github-checks)
 - [Testing](#testing)
+- [End-to-end testing](#end-to-end-testing)
 - [Code quality audits](#code-quality-audits)
 - [Manual try guides](#manual-try-guides)
 - [Deployment readiness](#deployment-readiness)
@@ -419,6 +428,8 @@ Then repeat the build loop for each feature:
 3. Run **`/implement`**. It branches, builds one step, shows the diff, proves the
    done-when, and waits for approval before moving on.
 4. Run **`/check`** when you want an outside proof pass against the real app.
+   For a browser-heavy feature with E2E set up, run **`/e2e-spec`** to record the
+   flows worth keeping, then **`/e2e-check`** for the suite verdict.
 5. Run **`/try`** when you want the manual review path: where to go, what to
    click or run, and what to expect.
 6. Run **`/audit current`** to review the complete feature-branch delta before
@@ -480,6 +491,9 @@ features.
 | **/debug** | when a test, build, request, or behavior is failing | Reproduces and isolates the failure without editing code or Blueprint state, then reports the evidence and hands confirmed repair work to `/fix` or `/implement`. |
 | **/fix** | for an unplanned bug or small change | Specs an ad-hoc fix into `current-feature.md`. |
 | **/tests** | when you want unit tests added | Adds or normalizes the stack-native unit test setup, adds one example test, updates an existing Verify command, and runs the resulting checks. It does not create CI by itself. |
+| **/e2e** | once, when you want browser end-to-end tests | Sets up Playwright and the Playwright CLI: installs the runner and browsers, writes a project-shaped config with a web server, adds a seed test and one smoke spec, and records the E2E commands in `AGENTS.md`. It does not create CI and does not change Verify. |
+| **/e2e-spec** | after `/implement`, for flows worth keeping covered | Turns the current spec's done-whens into Playwright specs by driving the real app with the Playwright CLI, or repairs specs that drifted. Writes test files only, never product source. |
+| **/e2e-check** | before `/audit`, or any time you want suite-level proof | Runs the Playwright suite, triages every failure into product bug, test drift, flake, or environment, and reports a verdict per done-when. Observes only. |
 | **/ci** | when you want automatic GitHub checks | Detects the real stack and existing CI, defines one Verify command from configured checks, creates or carefully aligns the GitHub workflow, runs Verify locally, and stops before push or remote ruleset changes. |
 | **/implement** | after reviewing a spec | Builds the current spec one small, reviewed step at a time and uses the documented Verify command when present, then ends with a compact review packet. |
 | **/check** | before wrapping up, or any time you want proof | Runs the real app and reports pass/fail against the spec's done-whens. |
@@ -590,10 +604,52 @@ parsers, validators, server actions, formatters, and similar work should include
 a passing test in the same diff. UI and integration work can ride on screenshot,
 browser, build, or API evidence from `/implement` and `/check`.
 
-For browser-heavy work, Playwright is preferred when the project already has it
-installed or declares a Playwright command. The blueprint does not install it by
-default; adding browser automation is a normal setup task when a project wants
-that level of verification.
+## End-to-end testing
+
+Browser end-to-end testing is a second, separate opt-in. `/tests` covers unit
+tests; `/e2e` covers real user flows in a real browser.
+
+```text
+/e2e
+```
+
+`/e2e` installs Playwright and its browsers, writes a config wired to the
+project's own dev server, adds a seed test plus one smoke spec, and records the
+E2E commands in `AGENTS.md`. It declines the scaffolder's GitHub Actions offer,
+because CI stays an explicit `/ci` decision, and it leaves `Verify` alone unless
+you ask otherwise - E2E runs need a browser download and a booted app, so folding
+them into every `Verify` makes the inner loop slow.
+
+Two Playwright tools are involved and they do different jobs:
+
+| Tool | What it is | Who uses it |
+| ---- | ---------- | ----------- |
+| `@playwright/test` | The test runner: `playwright.config.*`, spec files, `npx playwright test` | CI and `/e2e-check` |
+| `playwright-cli` (`@playwright/cli`) | The agent-facing command line that drives a browser one command at a time and prints the equivalent Playwright code for each action | `/e2e-spec` and `/e2e-check` |
+
+Once setup exists, the E2E loop sits inside the normal build loop:
+
+```text
+/implement -> /e2e-spec -> /e2e-check -> /audit current -> /complete
+```
+
+**`/e2e-spec`** turns the done-whens in `current-feature.md` into spec files. It
+starts the seed test paused, attaches `playwright-cli` to it, and walks the flow
+in the real app, so locators and assertions come from the running page rather
+than from reading components. Not every done-when earns a spec - a login flow
+does, a copy tweak does not - and the skill has to say which ones it skipped. It
+writes test files only. If a spec fails because the app is wrong, that goes back
+to `/implement` or `/fix` instead of being patched away.
+
+**`/e2e-check`** runs the suite and reports a verdict per done-when, not a pass
+count. Every failure gets triaged from the trace or a live `--debug=cli` session
+into one of four buckets - product bug, test drift, flake, or environment - and
+handed to the skill that owns it. "Probably flaky" is not an accepted verdict, and
+an uncovered done-when is reported as a gap rather than absorbed into a pass.
+
+`/check` and `/e2e-check` are complements, not duplicates. `/check` proves this
+feature's done-whens by hand right now. `/e2e-check` runs what was recorded
+earlier, so it also catches regressions in flows nobody is looking at.
 
 ## Code quality audits
 
@@ -735,6 +791,9 @@ step in `current-feature.md`.
 │       ├── feature/           ($feature: build-plan item to current-feature.md)
 │       ├── fix/               ($fix: document an ad-hoc fix)
 │       ├── tests/             ($tests: add unit testing)
+│       ├── e2e/               ($e2e: set up Playwright browser testing)
+│       ├── e2e-spec/          ($e2e-spec: write E2E specs from done-whens)
+│       ├── e2e-check/         ($e2e-check: run the E2E suite and triage)
 │       ├── ci/                ($ci: automatic GitHub checks)
 │       ├── implement/         ($implement: build the current spec)
 │       ├── check/             ($check: prove the done-whens)
@@ -757,6 +816,9 @@ step in `current-feature.md`.
 │       ├── feature/           (/feature: build-plan item to current-feature.md)
 │       ├── fix/               (/fix: document an ad-hoc fix)
 │       ├── tests/             (/tests: add unit testing)
+│       ├── e2e/               (/e2e: set up Playwright browser testing)
+│       ├── e2e-spec/          (/e2e-spec: write E2E specs from done-whens)
+│       ├── e2e-check/         (/e2e-check: run the E2E suite and triage)
 │       ├── ci/                (/ci: automatic GitHub checks)
 │       ├── implement/         (/implement: build the current spec)
 │       ├── check/             (/check: prove the done-whens)

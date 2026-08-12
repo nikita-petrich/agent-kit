@@ -9,6 +9,16 @@ published `create-ai-blueprint` package.
 
 ### Added
 
+- Added the `/e2e` and `$e2e` setup skill for Playwright end-to-end browser
+  testing: runner and browser install, a project-shaped config with a web
+  server, a seed test, one smoke spec, and recorded E2E commands in `AGENTS.md`.
+  It never creates CI and leaves `Verify` unchanged unless asked.
+- Added the `/e2e-spec` and `$e2e-spec` skill, which turns the current spec's
+  done-whens into Playwright specs by driving the running app with
+  `playwright-cli`, and repairs specs that drifted from the app.
+- Added the `/e2e-check` and `$e2e-check` skill, which runs the Playwright suite
+  and reports a verdict per done-when, triaging each failure into product bug,
+  test drift, flake, or environment.
 - Added repository licenses, security and support policies, issue forms, a pull
   request template, branded assets, and a custom social preview.
 - Added generated GitHub Releases after successful tagged npm publications.
@@ -24,6 +34,8 @@ published `create-ai-blueprint` package.
 
 ### Changed
 
+- Pointed `/tests` at `/e2e` for browser work and taught `/check` to prefer
+  `playwright-cli` for browser evidence and to defer suite runs to `/e2e-check`.
 - Reworked the repository and npm README presentation around faster setup,
   clearer tool support, package badges, and contribution links.
 - Expanded npm metadata and repository validation for the public trust surface.

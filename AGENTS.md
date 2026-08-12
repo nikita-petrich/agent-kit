@@ -53,6 +53,9 @@ Core skills:
 - `debug` - reproduce and isolate a failure without editing code, then hand the evidence to `fix` or `implement`
 - `fix` - document an ad-hoc bug or change into `blueprint/context/current-feature.md`
 - `tests` - add or normalize unit testing and turn on the test gate
+- `e2e` - set up Playwright end-to-end browser testing and the Playwright CLI, then record the E2E commands
+- `e2e-spec` - turn the current spec's done-whens into Playwright specs, or repair specs that drifted from the app
+- `e2e-check` - run the Playwright suite and report an honest per-done-when verdict with triaged failures
 - `ci` - explicitly set up one project-specific Verify command and matching automatic GitHub checks
 - `implement` - build the current spec one small, reviewed step at a time
 - `check` - prove the current spec against the running app
@@ -116,3 +119,7 @@ For a standard Next.js project. Change or remove if you're using something else.
 Testing is opt-in. If this project does not already have a unit test runner, run
 `/tests` or `$tests` to add one and update this section with the real test
 commands.
+
+End-to-end browser testing is a separate opt-in. Run `/e2e` or `$e2e` to set up
+Playwright and record the E2E commands here. E2E runs stay out of `Verify` unless
+you explicitly add them, because they need a browser download and a booted app.

@@ -85,6 +85,9 @@ Gather these, then summarize. Do not dump file contents.
    - A missing `Verify` command or GitHub workflow is informational. It means the
      optional automatic-check setup was not selected, not that the Blueprint is
      unhealthy.
+   - If a `playwright.config.*` exists, confirm `AGENTS.md` documents the E2E
+     commands, and the reverse. Either half without the other is drift worth
+     reporting, and `/e2e` is the fix. No E2E setup at all is informational.
 4. **Ignore rules**
    - Check obvious ignore patterns for the detected stack. For Node or Astro,
      look for `node_modules`, `.env`, `dist`, and framework cache folders such as
