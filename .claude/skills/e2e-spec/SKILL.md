@@ -52,6 +52,10 @@ Sort them:
 Name the scenarios in kebab-case, one file each, and say out loud which done-whens
 you are *not* covering and why. Silent omissions are the failure mode here.
 
+A done-when that needs no browser - pure logic, a database round-trip, an HTTP
+contract - belongs to `/test-spec`, which is cheaper and fails more precisely.
+Route it there instead of dragging a browser through it.
+
 If no feature spec is active and the user named nothing, ask what flow to cover
 rather than inventing coverage.
 

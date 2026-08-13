@@ -53,6 +53,7 @@ Core skills:
 - `debug` - reproduce and isolate a failure without editing code, then hand the evidence to `fix` or `implement`
 - `fix` - document an ad-hoc bug or change into `blueprint/context/current-feature.md`
 - `tests` - add or normalize unit testing and turn on the test gate
+- `test-spec` - write the current spec's unit, integration, and API tests, or repair failing ones
 - `e2e` - set up Playwright end-to-end browser testing and the Playwright CLI, then record the E2E commands
 - `e2e-spec` - turn the current spec's done-whens into Playwright specs, or repair specs that drifted from the app
 - `e2e-check` - run the Playwright suite and report an honest per-done-when verdict with triaged failures

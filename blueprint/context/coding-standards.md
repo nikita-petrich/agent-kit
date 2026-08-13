@@ -119,7 +119,9 @@ of the switch; the skills and `ai-interaction.md` only point back here.
   screenshot plus build evidence.
 - **When it's named:** the `/feature` spec's Testing section predicts the coverage,
   `/implement` writes the test with the step, and if a step surfaces logic the spec
-  didn't foresee, add a focused test then.
+  didn't foresee, add a focused test then. `/test-spec` writes the feature's unit,
+  integration, and API tests in one pass when you want them separate from the
+  implementation steps.
 - An empty suite should fail, not pass, so "no tests ran" never looks like "passed".
 - Test files live next to source files (for example `feature.test.ts`).
 - Run them via the project's test command (see Commands in `AGENTS.md`), not a
@@ -136,12 +138,15 @@ code and assuming it works.
 
 - If Playwright is already installed, or the Commands section of `AGENTS.md`
   declares a Playwright script, use Playwright for browser checks, screenshots,
-  console-error checks, and user-flow verification.
+  console-error checks, and user-flow verification. When `playwright-cli` is
+  available, prefer it for driving the browser: it returns a snapshot, console
+  output, and the equivalent Playwright code for each action.
 - If Playwright is not installed, do not add it silently in the middle of an
   unrelated feature. Use the available dev server, browser screenshots, build
   output, API output, or manual verification evidence instead.
 - Add Playwright only when the user asks for it, or when the current spec is
-  explicitly about setting up browser automation.
+  explicitly about setting up browser automation. `/e2e` is the setup path;
+  `/e2e-spec` records flows worth keeping, and `/e2e-check` runs the suite.
 - Browser evidence is especially important for flows that click, type, submit,
   navigate, download files, render complex layouts, or depend on client-side
   state.

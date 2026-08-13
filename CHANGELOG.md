@@ -17,8 +17,14 @@ published `create-ai-blueprint` package.
   done-whens into Playwright specs by driving the running app with
   `playwright-cli`, and repairs specs that drifted from the app.
 - Added the `/e2e-check` and `$e2e-check` skill, which runs the Playwright suite
-  and reports a verdict per done-when, triaging each failure into product bug,
-  test drift, flake, or environment.
+  and reports a table with one row per done-when, triaging each failure into
+  product bug, test drift, flake, or environment. `/e2e-check fix` also repairs
+  the test-side buckets and reruns each repaired spec twice.
+- Added the `/test-spec` and `$test-spec` skill, which writes the current spec's
+  unit, integration, and API tests, routes each done-when to the cheapest test
+  type that proves it, verifies each test can actually fail, and reports coverage
+  as a table. `/test-spec fix` repairs failing tests without patching over real
+  product bugs.
 - Added repository licenses, security and support policies, issue forms, a pull
   request template, branded assets, and a custom social preview.
 - Added generated GitHub Releases after successful tagged npm publications.

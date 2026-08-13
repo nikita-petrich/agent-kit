@@ -73,7 +73,8 @@ Apply the smallest practical diff:
    stack-specific testing note different from the default.
 
 Do not write a broad test suite for existing app code. This skill proves the
-testing path and turns on the gate; feature work adds focused tests later.
+testing path and turns on the gate; `/test-spec` writes the real tests for a
+feature once the runner exists.
 
 If adding dependencies requires network access, ask for the needed install command
 through the current tool's approval flow. Use the project's package manager.
@@ -116,7 +117,8 @@ Show the diff summary. Do not commit, merge, push, or start product feature work
   but it never creates a GitHub workflow on its own.
 - Keep the first test boring and small. It exists to prove the workflow.
 - Once `AGENTS.md` has a test command, later `/feature` and `/implement` runs
-  treat tests as the gate for logic-bearing changes.
+  treat tests as the gate for logic-bearing changes, and `/test-spec` writes the
+  unit, integration, and API tests for each feature.
 - Do not hide install or verification failures. Report exactly what failed and
   what to fix next.
 
