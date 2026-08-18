@@ -1,7 +1,7 @@
 # Changelog
 
 Notable changes to agent-kit are documented here. Release dates reflect the
-published `create-agentkit` package. Entries at 0.6.0 and below are the upstream
+published `agentkit-blueprint` package. Entries at 0.6.0 and below are the upstream
 history of `create-ai-blueprint`, which this project forked.
 
 ## [1.0.0] - 2026-08-18
@@ -41,8 +41,8 @@ history of `create-ai-blueprint`, which this project forked.
 
 ### Changed
 
-- Renamed the installer package to `create-agentkit` and repointed its metadata
-  at this fork. The workflow, adapters, and installed file layout are unchanged.
+- Renamed the installer package to `agentkit-blueprint` and repointed its
+  metadata at this fork. The workflow, adapters, and installed file layout are unchanged.
 - Pointed `/tests` at `/e2e` for browser work and taught `/check` to prefer
   `playwright-cli` for browser evidence and to defer suite runs to `/e2e-check`.
 - Reworked the repository and npm README presentation around faster setup,

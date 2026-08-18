@@ -17,7 +17,7 @@ const checks = [
   {
     name: "Installer unit tests",
     command: npmCommand,
-    args: ["--prefix", "packages/create-agentkit", "test"]
+    args: ["--prefix", "packages/agentkit-blueprint", "test"]
   },
   {
     name: "Packed installer smoke tests",

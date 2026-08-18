@@ -1,4 +1,4 @@
-name: Publish create-agentkit
+name: Publish agentkit-blueprint
 
 on:
   push:
@@ -31,16 +31,16 @@ jobs:
         run: npm run check
       - name: Verify tag matches package version
         if: github.ref_type == 'tag'
-        run: node -e "const v = require('./packages/create-agentkit/package.json').version; const t = process.env.GITHUB_REF_NAME; if (t !== 'v' + v) { console.error('Tag ' + t + ' does not match package version ' + v); process.exit(1); }"
+        run: node -e "const v = require('./packages/agentkit-blueprint/package.json').version; const t = process.env.GITHUB_REF_NAME; if (t !== 'v' + v) { console.error('Tag ' + t + ' does not match package version ' + v); process.exit(1); }"
       - name: Publish to npm
         run: |
           package_version=$(node -p "require('./package.json').version")
-          if npm view "create-agentkit@$package_version" version >/dev/null 2>&1; then
-            echo "create-agentkit@$package_version is already published."
+          if npm view "agentkit-blueprint@$package_version" version >/dev/null 2>&1; then
+            echo "agentkit-blueprint@$package_version is already published."
           else
             npm publish
           fi
-        working-directory: packages/create-agentkit
+        working-directory: packages/agentkit-blueprint
 
   release:
     if: github.ref_type == 'tag'

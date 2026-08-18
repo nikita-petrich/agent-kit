@@ -1,5 +1,5 @@
 {
-  "name": "create-agentkit",
+  "name": "agentkit-blueprint",
   "version": "1.0.0",
   "description": "Install a file-backed, spec-driven AI development workflow with Playwright end-to-end and unit testing skills into a scaffolded app.",
   "license": "MIT",
@@ -8,7 +8,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nikita-petrich/agent-kit.git",
-    "directory": "packages/create-agentkit"
+    "directory": "packages/agentkit-blueprint"
   },
   "bugs": {
     "url": "https://github.com/nikita-petrich/agent-kit/issues"
@@ -31,7 +31,7 @@
     "scaffold"
   ],
   "bin": {
-    "create-agentkit": "bin/create-agentkit.js"
+    "agentkit-blueprint": "bin/agentkit-blueprint.js"
   },
   "scripts": {
     "test": "node --test",

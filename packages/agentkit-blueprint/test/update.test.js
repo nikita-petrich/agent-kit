@@ -4,7 +4,7 @@ const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 
-const { parseArgs } = require("../bin/create-agentkit");
+const { parseArgs } = require("../bin/agentkit-blueprint");
 const {
   CONTROL_DIR,
   MANIFEST_PATH,

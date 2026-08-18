@@ -2,11 +2,11 @@
 
 ## Supported versions
 
-Security fixes target the latest published version of `create-agentkit`.
+Security fixes target the latest published version of `agentkit-blueprint`.
 Before reporting a problem, confirm it still exists after updating:
 
 ```bash
-npx create-agentkit@latest update
+npx agentkit-blueprint@latest update
 ```
 
 ## Reporting a vulnerability

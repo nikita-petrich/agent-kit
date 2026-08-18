@@ -1,11 +1,11 @@
-# create-agentkit
+# agentkit-blueprint
 
 Install the agent-kit workflow into an already scaffolded app: spec-driven build
 loop, plus unit and Playwright end-to-end testing skills.
 
-[![npm version](https://img.shields.io/npm/v/create-agentkit?style=flat-square&color=155eef)](https://www.npmjs.com/package/create-agentkit)
+[![npm version](https://img.shields.io/npm/v/agentkit-blueprint?style=flat-square&color=155eef)](https://www.npmjs.com/package/agentkit-blueprint)
 [![Validate Blueprint](https://github.com/nikita-petrich/agent-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/nikita-petrich/agent-kit/actions/workflows/validate.yml)
-[![MIT license](https://img.shields.io/npm/l/create-agentkit?style=flat-square&color=155eef)](LICENSE)
+[![MIT license](https://img.shields.io/npm/l/agentkit-blueprint?style=flat-square&color=155eef)](LICENSE)
 
 [Repository](https://github.com/nikita-petrich/agent-kit) |
 [Changelog](https://github.com/nikita-petrich/agent-kit/blob/main/CHANGELOG.md) |
@@ -15,13 +15,7 @@ Requires Node.js 18 or newer. Run the installer from an application that has
 already been scaffolded and initialized as a Git repository.
 
 ```bash
-npx create-agentkit@latest
-```
-
-You can also use npm's initializer form:
-
-```bash
-npm create agentkit@latest
+npx agentkit-blueprint@latest
 ```
 
 The installer copies the Blueprint workflow files into the current directory:
@@ -71,14 +65,12 @@ restart Claude Code in that folder so the newly added project skills appear.
 ## Options
 
 ```bash
-npx create-agentkit@latest -- --codex
-npx create-agentkit@latest -- --claude
-npx create-agentkit@latest -- --both
-npx create-agentkit@latest -- --force
-npx create-agentkit@latest -- --target ./my-app
+npx agentkit-blueprint@latest -- --codex
+npx agentkit-blueprint@latest -- --claude
+npx agentkit-blueprint@latest -- --both
+npx agentkit-blueprint@latest -- --force
+npx agentkit-blueprint@latest -- --target ./my-app
 ```
-
-The same flags work with `npm create agentkit@latest -- ...`.
 
 Use `--force` to overwrite existing Blueprint files. Without `--force`, the
 installer asks before overwriting in an interactive terminal and exits in
@@ -89,13 +81,13 @@ non-interactive runs.
 Preview the update plan:
 
 ```bash
-npx create-agentkit@latest update --dry-run
+npx agentkit-blueprint@latest update --dry-run
 ```
 
 Apply the update:
 
 ```bash
-npx create-agentkit@latest update
+npx agentkit-blueprint@latest update
 ```
 
 The updater detects the installed adapters and manages only these paths:

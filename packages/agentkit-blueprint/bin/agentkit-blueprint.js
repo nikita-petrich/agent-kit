@@ -444,16 +444,16 @@ function printClaudeRestartNote(adapter) {
 }
 
 function printHelp() {
-  console.log(`create-agentkit
+  console.log(`agentkit-blueprint
 
 Install agent-kit into an already scaffolded app.
 
 Usage:
-  npx create-agentkit@latest
-  npx create-agentkit@latest update
-  npx create-agentkit@latest -- --codex
-  npx create-agentkit@latest -- --claude
-  npx create-agentkit@latest -- --both
+  npx agentkit-blueprint@latest
+  npx agentkit-blueprint@latest update
+  npx agentkit-blueprint@latest -- --codex
+  npx agentkit-blueprint@latest -- --claude
+  npx agentkit-blueprint@latest -- --both
 
 Options:
   --codex          Install AGENTS.md, .agents/, and blueprint/

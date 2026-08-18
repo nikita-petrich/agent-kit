@@ -36,10 +36,10 @@ const requiredPaths = [
   "blueprint/history/features/README.md",
   "blueprint/history/fixes/README.md",
   "blueprint/history/rollbacks/README.md",
-  "packages/create-agentkit/bin/create-agentkit.js",
-  "packages/create-agentkit/LICENSE",
-  "packages/create-agentkit/lib/update.js",
-  "packages/create-agentkit/package.json"
+  "packages/agentkit-blueprint/bin/agentkit-blueprint.js",
+  "packages/agentkit-blueprint/LICENSE",
+  "packages/agentkit-blueprint/lib/update.js",
+  "packages/agentkit-blueprint/package.json"
 ];
 
 async function main() {
@@ -240,7 +240,7 @@ async function validateVerificationContract() {
       ["run that exact command as the final automated gate"]
     ],
     [
-      "packages/create-agentkit/README.md",
+      "packages/agentkit-blueprint/README.md",
       ["optional `/ci` or `$ci` skill"]
     ]
   ]);
@@ -302,7 +302,7 @@ async function validateSkillReferences(adapterFiles) {
 }
 
 async function validatePackageMetadata() {
-  const packageRoot = path.join(repoRoot, "packages", "create-agentkit");
+  const packageRoot = path.join(repoRoot, "packages", "agentkit-blueprint");
   const metadata = JSON.parse(
     await fs.readFile(path.join(packageRoot, "package.json"), "utf8")
   );
@@ -316,7 +316,7 @@ async function validatePackageMetadata() {
   ];
   const requiredScripts = ["test", "prepare-template", "prepack", "postpack"];
 
-  if (metadata.bin?.["create-agentkit"] !== "bin/create-agentkit.js") {
+  if (metadata.bin?.["agentkit-blueprint"] !== "bin/agentkit-blueprint.js") {
     throw new Error("Package bin entry does not point to the installer CLI");
   }
 
@@ -359,7 +359,7 @@ async function validatePackageMetadata() {
     }
   }
 
-  const binStats = await fs.stat(path.join(packageRoot, "bin", "create-agentkit.js"));
+  const binStats = await fs.stat(path.join(packageRoot, "bin", "agentkit-blueprint.js"));
 
   if (process.platform !== "win32" && (binStats.mode & 0o111) === 0) {
     throw new Error("Installer CLI is not executable");
@@ -370,9 +370,9 @@ async function validateRepositoryPolish() {
   const [rootLicense, packageLicense, packageMetadata, changelog, publishWorkflow] =
     await Promise.all([
       fs.readFile(path.join(repoRoot, "LICENSE")),
-      fs.readFile(path.join(repoRoot, "packages", "create-agentkit", "LICENSE")),
+      fs.readFile(path.join(repoRoot, "packages", "agentkit-blueprint", "LICENSE")),
       fs.readFile(
-        path.join(repoRoot, "packages", "create-agentkit", "package.json"),
+        path.join(repoRoot, "packages", "agentkit-blueprint", "package.json"),
         "utf8"
       ),
       fs.readFile(path.join(repoRoot, "CHANGELOG.md"), "utf8"),

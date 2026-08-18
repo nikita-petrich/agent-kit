@@ -11,13 +11,13 @@
 <p align="center"><strong>A file-backed, spec-driven workflow for building real software with AI while staying in control - with testing skills that prove the work.</strong></p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/create-agentkit"><img src="https://img.shields.io/npm/v/create-agentkit?style=flat-square&color=155eef" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/agentkit-blueprint"><img src="https://img.shields.io/npm/v/agentkit-blueprint?style=flat-square&color=155eef" alt="npm version"></a>
   <a href="https://github.com/nikita-petrich/agent-kit/actions/workflows/validate.yml"><img src="https://github.com/nikita-petrich/agent-kit/actions/workflows/validate.yml/badge.svg" alt="Validate Blueprint"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/nikita-petrich/agent-kit?style=flat-square&color=155eef" alt="MIT license"></a>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/create-agentkit">npm</a> |
+  <a href="https://www.npmjs.com/package/agentkit-blueprint">npm</a> |
   <a href="https://github.com/nikita-petrich/agent-kit/releases">Releases</a> |
   <a href="https://ai-blueprint.dev/docs/">Upstream docs</a> |
   <a href="CHANGELOG.md">Changelog</a>
@@ -26,7 +26,7 @@
 > [!NOTE]
 > **agent-kit** is a fork of
 > [bradtraversy/ai-blueprint](https://github.com/bradtraversy/ai-blueprint),
-> published as [`create-agentkit`](https://www.npmjs.com/package/create-agentkit).
+> published as [`agentkit-blueprint`](https://www.npmjs.com/package/agentkit-blueprint).
 > The workflow is unchanged. The fork adds four testing skills and wires them
 > into the existing loop: `/test-spec` writes unit, integration, and API tests
 > from the current spec, and `/e2e`, `/e2e-spec`, and `/e2e-check` cover browser
@@ -41,7 +41,7 @@ every diff before it lands.
 Install it inside an already scaffolded Git repository:
 
 ```bash
-npx create-agentkit@latest
+npx agentkit-blueprint@latest
 ```
 
 ## What this is
@@ -134,10 +134,8 @@ git init
 **2. Add the blueprint** from inside the app:
 
 ```bash
-npx create-agentkit@latest
+npx agentkit-blueprint@latest
 ```
-
-You can also run `npm create agentkit@latest`.
 
 The installer asks which AI tool adapters you want and adds only the Blueprint
 workflow files your app needs.
@@ -234,13 +232,13 @@ run `/overview` and continue through the normal build loop.
 Preview an update before it writes anything:
 
 ```bash
-npx create-agentkit@latest update --dry-run
+npx agentkit-blueprint@latest update --dry-run
 ```
 
 Then apply it:
 
 ```bash
-npx create-agentkit@latest update
+npx agentkit-blueprint@latest update
 ```
 
 Updates manage only Blueprint-owned workflow files under `.agents/skills/`,
