@@ -355,7 +355,7 @@ function printPlan(targetDir, adapter, entries, existingEntries) {
 
 function printUpdatePlan(prepared) {
   const { plan } = prepared;
-  console.log("AI Blueprint update plan.");
+  console.log("agent-kit update plan.");
   console.log(`Target: ${prepared.targetDir}`);
   console.log(`Adapters: ${prepared.adapters.join(", ")}`);
   console.log(`Version: ${prepared.previousVersion} -> ${prepared.version}`);
@@ -378,7 +378,7 @@ function printUpdatePlan(prepared) {
 }
 
 function printSuccess(targetDir, adapter, entries, existingEntries) {
-  console.log("AI Blueprint installed.");
+  console.log("agent-kit installed.");
   console.log(`Target: ${targetDir}`);
   console.log(`Adapters: ${adapter}`);
   console.log("Copied:");
@@ -405,7 +405,7 @@ function printSuccess(targetDir, adapter, entries, existingEntries) {
 }
 
 function printUpdateSuccess(prepared, result) {
-  console.log("AI Blueprint updated.");
+  console.log("agent-kit updated.");
   console.log(`Version: ${prepared.previousVersion} -> ${prepared.version}`);
   console.log(`Added: ${result.added}`);
   console.log(`Updated: ${result.updated}`);
@@ -444,16 +444,16 @@ function printClaudeRestartNote(adapter) {
 }
 
 function printHelp() {
-  console.log(`create-ai-blueprint
+  console.log(`create-agentkit
 
-Install AI Blueprint into an already scaffolded app.
+Install agent-kit into an already scaffolded app.
 
 Usage:
-  npx create-ai-blueprint@latest
-  npx create-ai-blueprint@latest update
-  npx create-ai-blueprint@latest -- --codex
-  npx create-ai-blueprint@latest -- --claude
-  npx create-ai-blueprint@latest -- --both
+  npx create-agentkit@latest
+  npx create-agentkit@latest update
+  npx create-agentkit@latest -- --codex
+  npx create-agentkit@latest -- --claude
+  npx create-agentkit@latest -- --both
 
 Options:
   --codex          Install AGENTS.md, .agents/, and blueprint/

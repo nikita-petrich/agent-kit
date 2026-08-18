@@ -17,7 +17,7 @@ const checks = [
   {
     name: "Installer unit tests",
     command: npmCommand,
-    args: ["--prefix", "packages/create-ai-blueprint", "test"]
+    args: ["--prefix", "packages/create-agentkit", "test"]
   },
   {
     name: "Packed installer smoke tests",
@@ -50,4 +50,4 @@ for (const check of checks) {
   }
 }
 
-console.log("\nAI Blueprint validation passed.");
+console.log("\nagent-kit validation passed.");

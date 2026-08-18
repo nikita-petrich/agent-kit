@@ -1,9 +1,10 @@
 # Changelog
 
-Notable changes to AI Blueprint are documented here. Release dates reflect the
-published `create-ai-blueprint` package.
+Notable changes to agent-kit are documented here. Release dates reflect the
+published `create-agentkit` package. Entries at 0.6.0 and below are the upstream
+history of `create-ai-blueprint`, which this project forked.
 
-## Unreleased
+## [1.0.0] - 2026-08-18
 
 ## [0.7.0] - 2026-08-17
 
@@ -40,6 +41,8 @@ published `create-ai-blueprint` package.
 
 ### Changed
 
+- Renamed the installer package to `create-agentkit` and repointed its metadata
+  at this fork. The workflow, adapters, and installed file layout are unchanged.
 - Pointed `/tests` at `/e2e` for browser work and taught `/check` to prefer
   `playwright-cli` for browser evidence and to defer suite runs to `/e2e-check`.
 - Reworked the repository and npm README presentation around faster setup,
@@ -123,6 +126,7 @@ published `create-ai-blueprint` package.
 - Added Codex and Claude Code adapters for the file-backed planning, feature,
   implementation, checking, audit, and completion workflow.
 
+[1.0.0]: https://github.com/nikita-petrich/agent-kit/releases/tag/v1.0.0
 [0.7.0]: https://github.com/aiblueprinthq/ai-blueprint/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/aiblueprinthq/ai-blueprint/compare/v0.5.2...v0.6.0
 [0.5.2]: https://github.com/aiblueprinthq/ai-blueprint/commits/v0.5.2

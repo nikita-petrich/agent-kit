@@ -1,6 +1,6 @@
 # AI Blueprint is primarily workflow documentation. The npm package is installer
 # distribution tooling, not the product language.
-packages/create-ai-blueprint/** linguist-vendored
+packages/create-agentkit/** linguist-vendored
 
 # Exclude Blueprint reference CSS templates from GitHub language stats.
 .agents/skills/prototype/reference/theme-variables.css linguist-vendored linguist-detectable=false

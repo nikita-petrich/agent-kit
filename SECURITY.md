@@ -2,11 +2,11 @@
 
 ## Supported versions
 
-Security fixes target the latest published version of `create-ai-blueprint`.
+Security fixes target the latest published version of `create-agentkit`.
 Before reporting a problem, confirm it still exists after updating:
 
 ```bash
-npx create-ai-blueprint@latest update
+npx create-agentkit@latest update
 ```
 
 ## Reporting a vulnerability

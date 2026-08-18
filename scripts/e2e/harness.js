@@ -3,7 +3,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const repoRoot = path.resolve(__dirname, "..", "..");
-const packageRoot = path.join(repoRoot, "packages", "create-ai-blueprint");
+const packageRoot = path.join(repoRoot, "packages", "create-agentkit");
 const runsRoot = path.join(__dirname, "runs");
 const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
 
@@ -84,7 +84,7 @@ class Runner {
       this.runDir
     );
 
-    const binary = path.join(runner, "node_modules", "create-ai-blueprint", "bin", "create-ai-blueprint.js");
+    const binary = path.join(runner, "node_modules", "create-agentkit", "bin", "create-agentkit.js");
     run(process.execPath, [binary, "--target", this.workspace, adapterFlag, "--yes"], this.runDir);
   }
 

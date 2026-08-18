@@ -50,7 +50,7 @@ and the README command table in the same change. The validation gate rejects any
 drift between those surfaces.
 
 The root `package.json`, `scripts/`, `.github/`, and this guide are maintainer
-files. They are not copied into applications by `create-ai-blueprint`.
+files. They are not copied into applications by `create-agentkit`.
 
 ## Skill evaluations
 

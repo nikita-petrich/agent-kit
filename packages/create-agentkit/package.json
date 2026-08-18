@@ -1,33 +1,37 @@
 {
-  "name": "create-ai-blueprint",
-  "version": "0.7.0",
-  "description": "Install a file-backed, spec-driven AI development workflow into a scaffolded app.",
+  "name": "create-agentkit",
+  "version": "1.0.0",
+  "description": "Install a file-backed, spec-driven AI development workflow with Playwright end-to-end and unit testing skills into a scaffolded app.",
   "license": "MIT",
-  "author": "Brad Traversy",
-  "homepage": "https://ai-blueprint.dev",
+  "author": "Nikita Petrich",
+  "homepage": "https://github.com/nikita-petrich/agent-kit#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aiblueprinthq/ai-blueprint.git",
-    "directory": "packages/create-ai-blueprint"
+    "url": "git+https://github.com/nikita-petrich/agent-kit.git",
+    "directory": "packages/create-agentkit"
   },
   "bugs": {
-    "url": "https://github.com/aiblueprinthq/ai-blueprint/issues"
+    "url": "https://github.com/nikita-petrich/agent-kit/issues"
   },
   "keywords": [
     "ai",
     "ai-coding",
     "blueprint",
+    "agent-kit",
     "codex",
     "claude",
     "claude-code",
     "agent",
+    "playwright",
+    "e2e",
+    "end-to-end-testing",
     "context-engineering",
     "spec-driven-development",
     "workflow",
     "scaffold"
   ],
   "bin": {
-    "create-ai-blueprint": "bin/create-ai-blueprint.js"
+    "create-agentkit": "bin/create-agentkit.js"
   },
   "scripts": {
     "test": "node --test",
@@ -49,5 +53,8 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "contributors": [
+    "Brad Traversy (original author of ai-blueprint)"
+  ]
 }

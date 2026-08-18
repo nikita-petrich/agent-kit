@@ -1,13 +1,13 @@
 {
-  "name": "ai-blueprint-maintainer",
+  "name": "agent-kit-maintainer",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
-  "description": "Maintainer validation commands for AI Blueprint.",
+  "description": "Maintainer validation commands for agent-kit.",
   "scripts": {
     "check": "node scripts/check-blueprint.js",
     "check:static": "node scripts/validate-blueprint.js",
-    "test": "npm --prefix packages/create-ai-blueprint test",
+    "test": "npm --prefix packages/create-agentkit test",
     "test:routing": "node --test scripts/evals/routing.test.js && node scripts/evals/routing.js --min-rank1 90",
     "test:package": "node scripts/smoke-package.js",
     "test:e2e": "node scripts/e2e/run.js"

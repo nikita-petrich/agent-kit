@@ -4,5 +4,5 @@ contact_links:
     url: https://ai-blueprint.dev/docs/
     about: Check the guides and command reference before opening an issue.
   - name: Security vulnerability
-    url: https://github.com/bradtraversy/ai-blueprint/security/advisories/new
+    url: https://github.com/nikita-petrich/agent-kit/security/advisories/new
     about: Report suspected vulnerabilities privately. Do not open a public issue.

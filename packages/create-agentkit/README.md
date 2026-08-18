@@ -1,27 +1,27 @@
-# create-ai-blueprint
+# create-agentkit
 
-Install AI Blueprint into an already scaffolded app.
+Install the agent-kit workflow into an already scaffolded app: spec-driven build
+loop, plus unit and Playwright end-to-end testing skills.
 
-[![npm version](https://img.shields.io/npm/v/create-ai-blueprint?style=flat-square&color=155eef)](https://www.npmjs.com/package/create-ai-blueprint)
-[![Validate Blueprint](https://github.com/aiblueprinthq/ai-blueprint/actions/workflows/validate.yml/badge.svg)](https://github.com/aiblueprinthq/ai-blueprint/actions/workflows/validate.yml)
-[![MIT license](https://img.shields.io/npm/l/create-ai-blueprint?style=flat-square&color=155eef)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/create-agentkit?style=flat-square&color=155eef)](https://www.npmjs.com/package/create-agentkit)
+[![Validate Blueprint](https://github.com/nikita-petrich/agent-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/nikita-petrich/agent-kit/actions/workflows/validate.yml)
+[![MIT license](https://img.shields.io/npm/l/create-agentkit?style=flat-square&color=155eef)](LICENSE)
 
-[Official site](https://ai-blueprint.dev) |
-[Documentation](https://ai-blueprint.dev/docs/) |
-[Repository](https://github.com/aiblueprinthq/ai-blueprint) |
-[Changelog](https://github.com/aiblueprinthq/ai-blueprint/blob/main/CHANGELOG.md)
+[Repository](https://github.com/nikita-petrich/agent-kit) |
+[Changelog](https://github.com/nikita-petrich/agent-kit/blob/main/CHANGELOG.md) |
+[Upstream docs](https://ai-blueprint.dev/docs/)
 
 Requires Node.js 18 or newer. Run the installer from an application that has
 already been scaffolded and initialized as a Git repository.
 
 ```bash
-npx create-ai-blueprint@latest
+npx create-agentkit@latest
 ```
 
 You can also use npm's initializer form:
 
 ```bash
-npm create ai-blueprint@latest
+npm create agentkit@latest
 ```
 
 The installer copies the Blueprint workflow files into the current directory:
@@ -71,14 +71,14 @@ restart Claude Code in that folder so the newly added project skills appear.
 ## Options
 
 ```bash
-npx create-ai-blueprint@latest -- --codex
-npx create-ai-blueprint@latest -- --claude
-npx create-ai-blueprint@latest -- --both
-npx create-ai-blueprint@latest -- --force
-npx create-ai-blueprint@latest -- --target ./my-app
+npx create-agentkit@latest -- --codex
+npx create-agentkit@latest -- --claude
+npx create-agentkit@latest -- --both
+npx create-agentkit@latest -- --force
+npx create-agentkit@latest -- --target ./my-app
 ```
 
-The same flags work with `npm create ai-blueprint@latest -- ...`.
+The same flags work with `npm create agentkit@latest -- ...`.
 
 Use `--force` to overwrite existing Blueprint files. Without `--force`, the
 installer asks before overwriting in an interactive terminal and exits in
@@ -89,13 +89,13 @@ non-interactive runs.
 Preview the update plan:
 
 ```bash
-npx create-ai-blueprint@latest update --dry-run
+npx create-agentkit@latest update --dry-run
 ```
 
 Apply the update:
 
 ```bash
-npx create-ai-blueprint@latest update
+npx create-agentkit@latest update
 ```
 
 The updater detects the installed adapters and manages only these paths:
@@ -119,14 +119,14 @@ conflicts so local changes are not lost.
 
 ## Help and contributing
 
-- Read the [full documentation](https://ai-blueprint.dev/docs/).
+- Read the [upstream documentation](https://ai-blueprint.dev/docs/).
 - Report reproducible problems through the repository's
-  [issue forms](https://github.com/aiblueprinthq/ai-blueprint/issues/new/choose).
+  [issue forms](https://github.com/nikita-petrich/agent-kit/issues/new/choose).
 - Follow the repository's
-  [security policy](https://github.com/aiblueprinthq/ai-blueprint/security/policy)
+  [security policy](https://github.com/nikita-petrich/agent-kit/security/policy)
   for private vulnerability reports.
 - Read the
-  [contribution guide](https://github.com/aiblueprinthq/ai-blueprint/blob/main/CONTRIBUTING.md)
+  [contribution guide](https://github.com/nikita-petrich/agent-kit/blob/main/CONTRIBUTING.md)
   before opening a pull request.
 
 ## License

@@ -5,7 +5,7 @@ const os = require("node:os");
 const path = require("node:path");
 
 const repoRoot = path.resolve(__dirname, "..");
-const packageRoot = path.join(repoRoot, "packages", "create-ai-blueprint");
+const packageRoot = path.join(repoRoot, "packages", "create-agentkit");
 const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
 const modes = {
   codex: ["codex"],
@@ -50,9 +50,9 @@ async function main() {
     const installedPackageRoot = path.join(
       runnerDir,
       "node_modules",
-      "create-ai-blueprint"
+      "create-agentkit"
     );
-    const binary = path.join(installedPackageRoot, "bin", "create-ai-blueprint.js");
+    const binary = path.join(installedPackageRoot, "bin", "create-agentkit.js");
     const metadata = JSON.parse(
       await fs.readFile(path.join(installedPackageRoot, "package.json"), "utf8")
     );

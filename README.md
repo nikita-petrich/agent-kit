@@ -2,34 +2,34 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/mark-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="assets/mark-light.svg">
-    <img src="assets/mark-light.svg" alt="AI Blueprint" width="64" height="64">
+    <img src="assets/mark-light.svg" alt="agent-kit" width="64" height="64">
   </picture>
 </p>
 
-<h1 align="center">AI Blueprint</h1>
+<h1 align="center">agent-kit</h1>
 
-<p align="center"><strong>A file-backed, spec-driven workflow for building real software with AI while staying in control.</strong></p>
+<p align="center"><strong>A file-backed, spec-driven workflow for building real software with AI while staying in control - with testing skills that prove the work.</strong></p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/create-ai-blueprint"><img src="https://img.shields.io/npm/v/create-ai-blueprint?style=flat-square&color=155eef" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/create-agentkit"><img src="https://img.shields.io/npm/v/create-agentkit?style=flat-square&color=155eef" alt="npm version"></a>
   <a href="https://github.com/nikita-petrich/agent-kit/actions/workflows/validate.yml"><img src="https://github.com/nikita-petrich/agent-kit/actions/workflows/validate.yml/badge.svg" alt="Validate Blueprint"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/nikita-petrich/agent-kit?style=flat-square&color=155eef" alt="MIT license"></a>
 </p>
 
 <p align="center">
-  <a href="https://ai-blueprint.dev">Official site</a> |
-  <a href="https://ai-blueprint.dev/docs/">Documentation</a> |
-  <a href="https://www.npmjs.com/package/create-ai-blueprint">npm</a> |
-  <a href="https://github.com/aiblueprinthq/ai-blueprint/releases">Releases</a> |
+  <a href="https://www.npmjs.com/package/create-agentkit">npm</a> |
+  <a href="https://github.com/nikita-petrich/agent-kit/releases">Releases</a> |
+  <a href="https://ai-blueprint.dev/docs/">Upstream docs</a> |
   <a href="CHANGELOG.md">Changelog</a>
 </p>
 
 > [!NOTE]
 > **agent-kit** is a fork of
-> [bradtraversy/ai-blueprint](https://github.com/bradtraversy/ai-blueprint). The
-> workflow is unchanged. The fork adds four testing skills and wires them into
-> the existing loop: `/test-spec` writes unit, integration, and API tests from
-> the current spec, and `/e2e`, `/e2e-spec`, and `/e2e-check` cover browser
+> [bradtraversy/ai-blueprint](https://github.com/bradtraversy/ai-blueprint),
+> published as [`create-agentkit`](https://www.npmjs.com/package/create-agentkit).
+> The workflow is unchanged. The fork adds four testing skills and wires them
+> into the existing loop: `/test-spec` writes unit, integration, and API tests
+> from the current spec, and `/e2e`, `/e2e-spec`, and `/e2e-check` cover browser
 > end-to-end testing with Playwright and the Playwright CLI. See
 > [Testing](#testing) and [End-to-end testing](#end-to-end-testing).
 
@@ -41,7 +41,7 @@ every diff before it lands.
 Install it inside an already scaffolded Git repository:
 
 ```bash
-npx create-ai-blueprint@latest
+npx create-agentkit@latest
 ```
 
 ## What this is
@@ -98,7 +98,7 @@ helping you write.
 - [Picking up where you left off](#picking-up-where-you-left-off)
 - [File map](#file-map)
 - [Support and contributing](#support-and-contributing)
-- [License](#license)
+- [Credits and license](#credits-and-license)
 - [Notes](#notes)
 
 ## Quick start
@@ -134,10 +134,10 @@ git init
 **2. Add the blueprint** from inside the app:
 
 ```bash
-npx create-ai-blueprint@latest
+npx create-agentkit@latest
 ```
 
-You can also run `npm create ai-blueprint@latest`.
+You can also run `npm create agentkit@latest`.
 
 The installer asks which AI tool adapters you want and adds only the Blueprint
 workflow files your app needs.
@@ -234,13 +234,13 @@ run `/overview` and continue through the normal build loop.
 Preview an update before it writes anything:
 
 ```bash
-npx create-ai-blueprint@latest update --dry-run
+npx create-agentkit@latest update --dry-run
 ```
 
 Then apply it:
 
 ```bash
-npx create-ai-blueprint@latest update
+npx create-agentkit@latest update
 ```
 
 Updates manage only Blueprint-owned workflow files under `.agents/skills/`,
@@ -928,7 +928,7 @@ actual build loop should stay the same across both adapters.
 
 ## Support and contributing
 
-- Read the [documentation](https://ai-blueprint.dev/docs/) for setup, command,
+- Read the [upstream documentation](https://ai-blueprint.dev/docs/) for setup, command,
   and troubleshooting guidance.
 - Follow [SUPPORT.md](SUPPORT.md) for usage questions, reproducible bugs, and
   feature requests.
@@ -937,9 +937,13 @@ actual build loop should stay the same across both adapters.
 - Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
 - Review [CHANGELOG.md](CHANGELOG.md) for published package history.
 
-## License
+## Credits and license
 
-AI Blueprint is available under the [MIT License](LICENSE).
+agent-kit is a fork of [AI Blueprint](https://github.com/bradtraversy/ai-blueprint)
+by Brad Traversy. The spec-driven workflow, the skill format, and the installer
+are his work; this fork adds the testing skills. Both are available under the
+[MIT License](LICENSE), which retains the original copyright alongside the
+fork's.
 
 ## Notes
 
