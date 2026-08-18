@@ -1,0 +1,12 @@
+{
+  "skill": "e2e-check",
+  "positive": [
+    { "prompt": "Run /e2e-check", "top_k": 1 },
+    { "prompt": "Execute the Playwright suite and triage every failure", "top_k": 3 },
+    { "prompt": "Give me the browser suite verdict per done-when as a table", "top_k": 3 }
+  ],
+  "negative": [
+    { "prompt": "Run /e2e-spec and record this browser flow as a new spec", "owner": "e2e-spec" },
+    { "prompt": "Run /check and prove the current feature works in the running app", "owner": "check" }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 name: test-spec
-description: Write the non-browser tests for the current feature - unit, integration, and API tests - from the "done when" criteria in current-feature.md, using the runner /tests configured. Routes each criterion to the cheapest test type that can actually prove it, writes the tests, runs them, optionally repairs failing tests, and reports coverage and results as a table. Use when the user runs /test-spec, invokes $test-spec, asks to write unit tests, add integration or API tests, generate tests for a feature, or fix failing unit tests.
+description: Write the unit, integration, and API tests for the feature being built, derived from the "done when" criteria in current-feature.md. Routes each criterion to the cheapest layer that can prove it, confirms each new assertion can actually fail, repairs stale assertions on request, and reports coverage as a table. Browser flows belong to e2e-spec. Use when the user runs /test-spec, invokes $test-spec, asks to write or generate unit, integration, or API tests for a feature, or to repair red assertions.
 ---
 
 # test-spec - write the non-browser tests for the current spec

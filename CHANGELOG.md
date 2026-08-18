@@ -1,12 +1,24 @@
 # Changelog
 
 Notable changes to agent-kit are documented here. Release dates reflect the
-published `agentkit-blueprint` package. Entries at 0.6.0 and below are the upstream
-history of `create-ai-blueprint`, which this project forked.
+published `agentkit-blueprint` package. Entries at 0.7.0 and below are the upstream
+history of `create-ai-blueprint`, which this project forked and tracks.
+
+## [1.1.0] - 2026-08-18
+
+### Added
+
+- Merged upstream AI Blueprint 0.7.0: the read-only `/debug` workflow, the
+  optional `/discovery` planning workflow, focused `quality`, `security`,
+  `performance`, and `tests` lenses for `/audit`, and deterministic routing
+  evaluations for every skill.
+
+### Changed
+
+- Added routing evaluations to the repository gate while keeping maintainer
+  evaluation files out of the published package.
 
 ## [1.0.0] - 2026-08-18
-
-## [0.7.0] - 2026-08-17
 
 ### Added
 
@@ -26,11 +38,19 @@ history of `create-ai-blueprint`, which this project forked.
   type that proves it, verifies each test can actually fail, and reports coverage
   as a table. `/test-spec fix` repairs failing tests without patching over real
   product bugs.
-- Added repository licenses, security and support policies, issue forms, a pull
-  request template, branded assets, and a custom social preview.
-- Added generated GitHub Releases after successful tagged npm publications.
-- Added deterministic routing evaluations for all Blueprint skills and
-  opt-in live-agent scenarios for high-risk workflow boundaries.
+
+### Changed
+
+- Renamed the installer package to `agentkit-blueprint` and repointed its
+  metadata at this fork. The workflow, adapters, and installed file layout are
+  unchanged.
+- Pointed `/tests` at `/e2e` for browser work and taught `/check` to prefer
+  `playwright-cli` for browser evidence and to defer suite runs to `/e2e-check`.
+
+## [0.7.0] - 2026-08-17
+
+### Added
+
 - Added the read-only `/debug` and `$debug` workflow for reproducing failures,
   isolating root causes, and handing confirmed repairs to `/fix` or `/implement`.
 - Added focused `quality`, `security`, `performance`, and `tests` lenses to
@@ -38,18 +58,17 @@ history of `create-ai-blueprint`, which this project forked.
 - Added the optional `/discovery` and `$discovery` workflow for developing
   detailed project plans through a deep, adaptive conversation, with full draft
   review and explicit approval before either user-owned plan is written.
+- Added deterministic routing evaluations for all Blueprint skills and
+  opt-in live-agent scenarios for high-risk workflow boundaries.
+- Added repository licenses, security and support policies, issue forms, a pull
+  request template, branded assets, and a custom social preview.
+- Added generated GitHub Releases after successful tagged npm publications.
 
 ### Changed
 
-- Renamed the installer package to `agentkit-blueprint` and repointed its
-  metadata at this fork. The workflow, adapters, and installed file layout are unchanged.
-- Pointed `/tests` at `/e2e` for browser work and taught `/check` to prefer
-  `playwright-cli` for browser evidence and to defer suite runs to `/e2e-check`.
 - Reworked the repository and npm README presentation around faster setup,
   clearer tool support, package badges, and contribution links.
 - Expanded npm metadata and repository validation for the public trust surface.
-- Added routing evaluations to the automatic repository gate while keeping all
-  maintainer evaluation files out of the published package.
 - Clarified that users may write plans directly or develop them through any AI
   conversation, and that `/discovery` never changes the existing manual path or
   becomes a prerequisite for `/overview`.
@@ -126,6 +145,7 @@ history of `create-ai-blueprint`, which this project forked.
 - Added Codex and Claude Code adapters for the file-backed planning, feature,
   implementation, checking, audit, and completion workflow.
 
+[1.1.0]: https://github.com/nikita-petrich/agent-kit/releases/tag/v1.1.0
 [1.0.0]: https://github.com/nikita-petrich/agent-kit/releases/tag/v1.0.0
 [0.7.0]: https://github.com/aiblueprinthq/ai-blueprint/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/aiblueprinthq/ai-blueprint/compare/v0.5.2...v0.6.0

@@ -1,0 +1,12 @@
+{
+  "skill": "e2e",
+  "positive": [
+    { "prompt": "Run /e2e", "top_k": 1 },
+    { "prompt": "Install Playwright and configure browser testing for this project", "top_k": 3 },
+    { "prompt": "Set up end-to-end browser testing with a smoke spec and record the commands", "top_k": 3 }
+  ],
+  "negative": [
+    { "prompt": "Run /tests and add the stack-native unit test runner", "owner": "tests" },
+    { "prompt": "Run /ci and make GitHub execute the existing Verify command", "owner": "ci" }
+  ]
+}

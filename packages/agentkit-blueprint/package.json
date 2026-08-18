@@ -1,6 +1,6 @@
 {
   "name": "agentkit-blueprint",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Install a file-backed, spec-driven AI development workflow with Playwright end-to-end and unit testing skills into a scaffolded app.",
   "license": "MIT",
   "author": "Nikita Petrich",

@@ -1,0 +1,12 @@
+{
+  "skill": "e2e-spec",
+  "positive": [
+    { "prompt": "Run /e2e-spec", "top_k": 1 },
+    { "prompt": "Record the current feature's browser flow as a Playwright spec", "top_k": 3 },
+    { "prompt": "Repair the Playwright spec whose locator drifted from the app", "top_k": 3 }
+  ],
+  "negative": [
+    { "prompt": "Run /e2e-check and give me the suite verdict", "owner": "e2e-check" },
+    { "prompt": "Run /test-spec and write the unit tests for this feature", "owner": "test-spec" }
+  ]
+}

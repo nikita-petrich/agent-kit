@@ -1,0 +1,12 @@
+{
+  "skill": "test-spec",
+  "positive": [
+    { "prompt": "Run /test-spec", "top_k": 1 },
+    { "prompt": "Write the unit and integration tests for the current feature", "top_k": 3 },
+    { "prompt": "Add API tests covering this endpoint's error contract", "top_k": 3 }
+  ],
+  "negative": [
+    { "prompt": "Run /tests and install the stack-native unit test runner", "owner": "tests" },
+    { "prompt": "Run /e2e-spec and record this browser flow as a Playwright spec", "owner": "e2e-spec" }
+  ]
+}
