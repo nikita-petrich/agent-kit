@@ -4,7 +4,7 @@ Notable changes to agent-kit are documented here. Release dates reflect the
 published `agentkit-blueprint` package. Entries at 0.7.0 and below are the upstream
 history of `create-ai-blueprint`, which this project forked and tracks.
 
-## [Unreleased]
+## [1.2.0] - 2026-08-19
 
 ### Added
 
