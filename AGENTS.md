@@ -79,7 +79,10 @@ or develop them through any conversation before running `/overview`.
 Optional explicit-only skill: `autopilot` can run one bounded spec/build/check
 and targeted-audit pass when directly invoked. It may create checkpoint commits
 on the feature or fix branch after passing steps, repair confirmed P0/P1 findings
-within scope, and rerun affected checks. It stops before `/complete`, merge, push,
+within scope, and rerun affected checks. An optional testing argument (`unit`,
+`e2e`, or `full`) also runs the matching create, validate, and repair test cycle
+via `/test-spec`, `/e2e-spec`, and `/e2e-check`, setting up the runner or
+Playwright first when needed. It stops before `/complete`, merge, push,
 deploy, or destructive actions.
 
 Deployment is also explicit. `/release` can prepare local Render or Vercel config

@@ -520,6 +520,15 @@ affected code, repairs confirmed P0/P1 findings that remain within scope, reruns
 the affected checks, and stops with a review packet. Broader project cleanup
 remains a separate `/audit` followed by planned `/fix` work.
 
+An optional testing argument runs a full testing cycle alongside the build,
+separate from the target and in either order. `unit` writes, validates, and
+repairs non-browser tests (`/test-spec`); `e2e` records and runs Playwright specs
+(`/e2e-spec` then `/e2e-check`); `full` does both, for example `/autopilot 3 full`.
+With no testing argument Autopilot keeps its previous behavior and only honors the
+ambient test gate. Fixing in this cycle repairs test or spec files only, never
+product code, and Autopilot sets up the runner or Playwright first when it is
+missing.
+
 Autopilot does not replace the normal workflow. `/feature`, `/implement`,
 `/check`, and `/complete` remain the conservative default.
 

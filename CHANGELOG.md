@@ -4,6 +4,18 @@ Notable changes to agent-kit are documented here. Release dates reflect the
 published `agentkit-blueprint` package. Entries at 0.7.0 and below are the upstream
 history of `create-ai-blueprint`, which this project forked and tracks.
 
+## [Unreleased]
+
+### Added
+
+- `/autopilot` now takes an optional testing argument, orthogonal to its target
+  and in either order: `unit` runs the non-browser test cycle (`/test-spec`),
+  `e2e` runs the browser cycle (`/e2e-spec` then `/e2e-check`), and `full` runs
+  both. Each writes, cross-validates, and repairs its own tests or specs (test
+  files only), setting up the runner or Playwright first when needed. With no
+  testing argument Autopilot keeps its previous behavior and only honors the
+  ambient test gate.
+
 ## [1.1.0] - 2026-08-18
 
 ### Added

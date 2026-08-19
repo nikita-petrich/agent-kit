@@ -37,6 +37,24 @@ Common forms:
 - `fix "<issue>"`: write and build an ad-hoc fix spec.
 - `resume`: continue the current feature on its existing branch.
 
+Optional testing, separate from the target and in either order, such as
+`/autopilot 3 full` or `$autopilot fix "flaky totals" unit`:
+
+- no testing argument: keep today's behavior and honor the ambient test gate only.
+  Run the declared `Verify` or test command and require a test for new in-scope
+  logic when `AGENTS.md` declares a test command, but author no new suites.
+- `unit`: run the non-browser testing cycle for this feature with the `/test-spec`
+  behavior. Write unit, integration, and API tests from the done-whens, prove each
+  can fail, run them, and repair test drift. Repairs touch test files only.
+- `e2e`: run the browser testing cycle with the `/e2e-spec` then `/e2e-check`
+  behavior. Record specs from the done-whens, run the suite, and triage. Repairs
+  touch spec files only.
+- `full`: do both the `unit` and the `e2e` cycle: create, cross-validate, repair.
+
+If the testing value is unclear, treat it as absent and say so. Fixing here only
+ever repairs test or spec files. A real product bug stays a reported failure and is
+handled under the finding rules in the targeted audit step, never by bending a test.
+
 If the requested target conflicts with a feature already in progress, stop and
 ask which one should win. Do not overwrite `blueprint/context/current-feature.md`
 silently.
@@ -134,7 +152,9 @@ For every step:
    - did it add scope?
    - is the error path handled?
    - did it follow `coding-standards.md`?
-   - are tests present for new in-scope logic when the test gate is on?
+   - are tests present for new in-scope logic when the test gate is on? When a
+     testing parameter is set, the Step 5 testing cycle authors them; here just
+     confirm the step did not regress existing tests.
 5. Fix obvious issues and rerun the failed checks.
 6. Mark the step checked in `current-feature.md` only after the step passes.
 7. Create a checkpoint commit on the feature or fix branch for the passing step.
@@ -146,7 +166,39 @@ For every step:
 Do not batch the whole feature into one large diff. If a step gets too large,
 split the step in `current-feature.md` and continue with the first smaller step.
 
-## Step 5 - acceptance check
+## Step 5 - testing cycle
+
+Run this step only when the `Input` supplied a testing value. With no testing
+value, skip it entirely and rely on the ambient test gate already applied in
+Step 4. `full` runs both cycles below.
+
+**`unit` or `full` - non-browser tests.**
+
+1. If `AGENTS.md` declares no test command, set the runner up first with the
+   `/tests` behavior: install the stack-native runner and add the test command to
+   the `Commands` section and to `Verify` when it exists. This turns the test gate
+   on, so note it in the packet.
+2. Run the `/test-spec` behavior for the feature: derive unit, integration, and API
+   tests from the done-whens, prove each new assertion can fail, then run the suite
+   until it is green.
+
+**`e2e` or `full` - browser tests.**
+
+1. If `AGENTS.md` declares no E2E command, set Playwright up first with the `/e2e`
+   behavior. Note the browser download in the packet.
+2. Run the `/e2e-spec` behavior to record one spec per done-when scenario, then the
+   `/e2e-check` behavior to run the suite and triage every failure.
+
+Across both cycles:
+
+- Repair only test or spec files. A failure that reflects a real product bug stays
+  a reported failure; never bend a test to pass. In-scope product defects are
+  repaired later under the targeted audit step's P0 and P1 finding rules.
+- Use the existing two-attempt hard stop for repeated repair failures on one test.
+- Create a checkpoint commit for the new tests or specs only after they pass, with
+  a conventional message about the tests, not about Autopilot.
+
+## Step 6 - acceptance check
 
 After all implementation steps are checked, run the `/check` behavior for the
 feature when any done-when is behavioral, visual, or integration-facing.
@@ -154,7 +206,7 @@ feature when any done-when is behavioral, visual, or integration-facing.
 For pure library or CLI work, build plus tests and representative command output
 may be enough. Be explicit about the evidence used.
 
-## Step 6 - targeted quality audit and repair
+## Step 7 - targeted quality audit and repair
 
 After the acceptance check, apply the `/audit current` behavior to the active
 feature, its diff, and the nearby code affected by the change. This is a targeted
@@ -193,7 +245,7 @@ the feature into a general refactor, silently suppress a finding, or turn this
 step into a full-project hardening pass. A broader cleanup remains a separate
 `/audit` followed by planned `/fix` work.
 
-## Step 7 - final review packet
+## Step 8 - final review packet
 
 Stop with a concise review packet. Keep it useful enough for `/complete` but not
 a full audit report:
@@ -204,6 +256,9 @@ a full audit report:
 - what the spec critique changed
 - changed files and why each changed
 - build/test/check commands run, with pass or fail
+- testing cycle, when a testing value ran: which value, any runner or Playwright
+  setup done and the resulting test-gate change, tests or specs created, the suite
+  result, test drift repaired, and any product-bug failures left open
 - screenshots or output paths, when relevant
 - how to try it manually, or a pointer to `/try` for the full walkthrough
 - checkpoint commits created
@@ -229,7 +284,9 @@ Stop immediately and report instead of continuing when Autopilot would need to:
 - delete data, reset a database, run irreversible migrations, kill processes, or
   change system settings
 - install dependencies or use network access without the current tool's approval
-  flow
+  flow, except the one-time `/tests` or `/e2e` setup an explicit testing parameter
+  authorizes, which still runs through that approval flow and is reported in the
+  packet
 - make a product decision not covered by the docs
 - continue after two failed fix attempts on the same issue
 - hide, skip, or hand-wave a failing check
@@ -240,6 +297,9 @@ Stop immediately and report instead of continuing when Autopilot would need to:
 - Autopilot creates checkpoint commits on the feature or fix branch after passing
   steps.
 - Autopilot audits the active feature and affected code, not the entire project.
+- A testing parameter authorizes writing and repairing test or spec files and, if
+  needed, the one-time `/tests` or `/e2e` setup. It never authorizes editing product
+  code to satisfy a test.
 - A P0 or P1 finding left `open` or `fixed` in `blueprint/context/findings.md`
   blocks readiness for `/complete`. The ledger is what makes this enforceable.
 - Autopilot stops before `/complete`. It never merges.

@@ -3,10 +3,12 @@
   "positive": [
     { "prompt": "Run /autopilot on the next feature", "top_k": 1 },
     { "prompt": "Use Autopilot to take this fix through spec, build, check, and audit", "top_k": 1 },
-    { "prompt": "I explicitly want Autopilot to handle the current feature but stop before completing or merging", "top_k": 3 }
+    { "prompt": "I explicitly want Autopilot to handle the current feature but stop before completing or merging", "top_k": 3 },
+    { "prompt": "Run /autopilot full to build the feature and run the whole testing cycle", "top_k": 1 }
   ],
   "negative": [
     { "prompt": "Run /implement one reviewed step at a time", "owner": "implement" },
-    { "prompt": "Run /complete and ask me before merging the finished branch", "owner": "complete" }
+    { "prompt": "Run /complete and ask me before merging the finished branch", "owner": "complete" },
+    { "prompt": "Write unit and integration tests for this feature and repair the red assertions", "owner": "test-spec" }
   ]
 }
